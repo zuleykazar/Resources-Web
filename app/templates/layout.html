@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block navbar %}
+        
+{% endblock %}
+
+
+{% block content%}
+    <div class="container mx-auto p-4">
+
+        <div class="h-full h-full">
+            {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+                    <div class="" role="alert">
+                        {{ message }}
+                    </div>
+                
+                {% endfor %}
+            
+            
+            {% endif %}
+
+            {% endwith %}
+        </div>
+        
+        {% block container %}
+        
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+    <footer class="bg-gray-200 rounded-md h-12 w-full" >
+        
+    </footer>
+{% endblock %}
