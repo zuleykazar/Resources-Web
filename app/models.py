@@ -1,12 +1,13 @@
 import datetime
 
+from flask_login import UserMixin
+
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
-
 from ._init_ import db
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__='users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -45,3 +46,7 @@ class User(db.Model):
     @classmethod
     def get_by_email(cls, email):
         return User.query.filter_by(email=email).first()
+
+    @classmethod
+    def get_by_id(cls, id):
+        return User.query.filter_by(id=id).first()

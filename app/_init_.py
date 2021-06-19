@@ -1,10 +1,13 @@
 from flask import Flask
+
+from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 csrf = CSRFProtect()
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 
 from app.views import page
@@ -14,6 +17,8 @@ def create_app(config):
     app.config.from_object(config)
     
     csrf.init_app(app)
+
+    login_manager.init_app(app)
     
     app.register_blueprint(page)
     
