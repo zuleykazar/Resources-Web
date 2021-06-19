@@ -3,6 +3,7 @@ from wtforms import validators
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.fields.html5 import EmailField
 
+from .models import User 
 
 class LoginForm(Form):
     username = StringField('Username', [
@@ -29,3 +30,11 @@ class RegisterForm(Form):
     accept = BooleanField('', [
         validators.DataRequired()
     ])
+
+    def validate_username(self, username):
+        if User.get_by_username(username.data):
+            raise validators.ValidationError('El username ya se encuentra en uso.') #no muestra este mensaje (Issue)
+
+    def validate_username(self, email):
+        if User.get_by_email(email.data):
+            raise validators.ValidationError('El email ya se encuentra en uso.') #no muestra este mensaje (Issue)
