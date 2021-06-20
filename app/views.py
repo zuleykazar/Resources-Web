@@ -34,7 +34,9 @@ def login():
         if user and user.verify_password(form.password.data):
             login_user(user)
             flash('Usuario autenticado exitosamente.')
-    
+        
+        flash('Usuario o contraseña invalida.', 'error')
+
     return render_template('auth/login.html', title = 'Login', form = form) #el title no se esta mostrando
 
 @page.route('/register', methods = ['GET', 'POST'])   
