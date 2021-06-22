@@ -1,7 +1,7 @@
 from flask import Blueprint
-from flask import render_template, request, flash 
+from flask import render_template, request, flash, redirect, url_for 
 
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from .models import User
 from .forms import LoginForm, RegisterForm
 
@@ -25,6 +25,12 @@ def page_not_found(error):
 def index():
     return render_template('index.html', title = 'Index' ) #el title no se esta mostrando
 
+@page.route('/logout')
+def logout():
+    logout_user()
+    flash ('Cerraste sesión exitosamente.')
+    return redirect(url_for('.login'))
+
 @page.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
@@ -34,8 +40,8 @@ def login():
         if user and user.verify_password(form.password.data):
             login_user(user)
             flash('Usuario autenticado exitosamente.')
-        
-        flash('Usuario o contraseña invalida.', 'error')
+        else:
+            flash('Usuario o contraseña invalida.', 'error')
 
     return render_template('auth/login.html', title = 'Login', form = form) #el title no se esta mostrando
 
