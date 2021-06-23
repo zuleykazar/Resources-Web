@@ -15,7 +15,7 @@ def load_user(id):
 
 @page.route('/article')
 def article():
-    return render_template('article.html', title = 'Article' ) #el title no se esta mostrando (Issue)
+    return render_template('article.html', title = 'Article' ) 
 
 @page.app_errorhandler(404)
 def page_not_found(error):
@@ -23,7 +23,7 @@ def page_not_found(error):
 
 @page.route('/')
 def index():
-    return render_template('index.html', title = 'Index' ) #el title no se esta mostrando
+    return render_template('index.html', title = 'Index' ) 
 
 @page.route('/logout')
 def logout():
@@ -43,7 +43,7 @@ def login():
         else:
             flash('Usuario o contraseña invalida.', 'error')
 
-    return render_template('auth/login.html', title = 'Login', form = form) #el title no se esta mostrando
+    return render_template('auth/login.html', title = 'Login', form = form) 
 
 @page.route('/register', methods = ['GET', 'POST'])   
 def register():
@@ -55,5 +55,4 @@ def register():
             print('Usuario creado exitosamente!')
             print(user.id)
 
-    return render_template('auth/register.html', title='Registro', form = form) #el title no se esta mostrando
-
+    return render_template('auth/register.html', title='Registro', form = form) 

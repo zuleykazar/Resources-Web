@@ -4,9 +4,24 @@
     {{ title }}
 {% endblock %}
 
-
-{% block navbar %}
-        
+{% block nav %}
+    <nav class="flex justify-between items-center container p-4 mx-auto h-16 w-11/12 border-2 border-pink-500 rounded-md shadow-md my-4">
+        <a href="{{url_for('static', filename='index.html')}}" class="">
+            <div class="flex justify-center items-center h-10 w-10 rounded-full bg-pink-500 z-0">
+                <div class="flex justify-center items-center h-6 w-6 rounded-full bg-white z-1"> 
+                    <div class="flex justify-center items-center h-4 w-4 rounded-full bg-gray-300 z-2">
+                        <div class="flex justify-center items-center h-2 w-2 rounded-full bg-black z-3"></div>
+                    </div>
+                </div>
+            </div>
+        </a> 
+        <div class="flex space-x-4">
+            <a href="">Item</a>
+            <a href="">Item</a>
+            <a href="">Item</a>
+            <a href="">Item</a>
+        </div>
+    </nav>
 {% endblock %}
 
 
@@ -20,11 +35,11 @@
 
                 {% for categories, message in messages %}
                     {% if category == 'error' %}
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger bg-red-500 opacity-50" role="alert">
                             {{ message }}
                         </div>
-                    {% else %}                                          <!--No esta reconociendo el else (issue)-->
-                        <div class="alert alert-success" role="alert">
+                    {% else %}                                          
+                        <div class="alert alert-success bg-green-500 opacity-50" role="alert">
                             {{ message }}
                         </div>
                     {% endif%}
