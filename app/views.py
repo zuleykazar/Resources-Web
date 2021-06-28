@@ -14,9 +14,14 @@ page = Blueprint('page', __name__)
 def load_user(id):
     return User.get_by_id(id)
 
-@page.route('/article')
+@page.route('/articles')
 def article():
-    return render_template('article.html', title = 'Article' ) 
+    return render_template('article.html', title = 'Article' )
+
+@page.route('/current-post')
+def currentpost():
+    return render_template('current-post.html', title = 'Post' )
+
 
 @page.app_errorhandler(404)
 def page_not_found(error):
