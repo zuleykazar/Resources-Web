@@ -14,13 +14,13 @@ page = Blueprint('page', __name__)
 def load_user(id):
     return User.get_by_id(id)
 
-@page.route('/articles')
-def article():
-    return render_template('article.html', title = 'Article' )
+@page.route('/posts')
+def posts():
+    return render_template('posts.html', title = 'Posts' )
 
 @page.route('/current-post')
 def currentpost():
-    return render_template('current-post.html', title = 'Post' )
+    return render_template('current-post.html', title = 'Current Post' )
 
 
 @page.app_errorhandler(404)
