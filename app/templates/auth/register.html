@@ -2,39 +2,50 @@
 {% from 'helpers/_forms.html' import render_field %}
 
 {%  block container %}
-    <div class="flex justify-center items-center">
-        <div class="flex flex-col justify-center h-full w-5/12 rounded-md bg-gray-50 border-2 border-pink-500 p-3">
-            <h3 class="mx-auto font-sans text-xl font-extralight my-4">CREAR SESION</h3>
-            <form class="w-80 flex flex-col justify-center mx-auto space-y-8" method="post">
+    <div class="lg:w-4/5 sm:w-11/12 mx-auto my-8 flex justify-evenly items-center rounded-md bg-white shadow-md">
+        <div class="lg:flex md:flex items-center justify-center hidden ">
+            <img class="lg:w-60 lg:h-60 md:h-52 md:w-52 " src="{{ url_for('static', filename='images/cabin.svg')}}" alt="">
+        </div>
+        <div class="flex flex-col justify-center items-center h-full lg:w-80 md:w-60 p-4">
+            <h3 class="mx-auto font-sans text-xl font-extralight my-4">REGISTRO</h3>
+            <form class="lg:w-80 md:w-60 flex flex-col mx-auto space-y-8" method="post">
     
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
     
-                <div class="form-group h-8 w-full border-2 border-pink-500 rounded-md space-y-2 px-2">
+                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
                 {{ render_field (form.username, class='form-control', placeholder='username') }}
                 </div>
             
-                <div class="form-group form-group h-8 w-full border-2 border-pink-500 rounded-md space-y-2 px-2">
+                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
                     {{ render_field (form.email, class='form-control', placeholder='email') }}
                 </div>
     
-                <div class="form-group form-group h-8 w-full border-2 border-pink-500 rounded-md space-y-2 px-2">
+                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
                     {{ render_field (form.password, class='form-control', placeholder='password') }}
                 </div>
             
-                <div class="form-group form-group h-8 w-full border-2 border-pink-500 rounded-md space-y-2 px-2">
+                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
                     {{ render_field (form.confirm_password, class='form-control', placeholder='confirm password') }}
                 </div>
     
                 <div class="form-check">
                     {{ form. accept(class_='form-check-input') }}
-                    <label for="" class="form-check-bale">Acepto los términos y condiciones.</label>
+                    <label for="" class="form-check-bale text-sm">Acepto los términos y condiciones.</label>
                 </div>
     
-                <button type="submit" class="h-12 w-2/3 mx-auto bg-pink-500 text-xl text-gray-50 font-bold rounded-md p-3 my-4 hover:bg-opacity-80">REGISTRAR</button>
+                <div class="flex justify-center">
+                    <button type="submit" class="h-12 w-2/3 bg-pink-500 text-lg text-gray-50 font-semibold rounded-md p-3 my-4 hover:bg-opacity-80">CREAR SESION</button>
+                </div>
     
             </form>
         </div>
     </div>
 
 {%  endblock %}
+
+{% block footer %}
+   
+{% endblock %}
+
+
 
