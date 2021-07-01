@@ -22,7 +22,6 @@ def posts():
 def currentpost():
     return render_template('current-post.html', title = 'Current Post' )
 
-
 @page.app_errorhandler(404)
 def page_not_found(error):
     return render_template ('errors/404.html'), 404
