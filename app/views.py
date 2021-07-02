@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import render_template, request, flash, redirect, url_for 
 
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from .models import User
 from .forms import LoginForm, RegisterForm
 from app.consts import *
@@ -61,3 +61,13 @@ def register():
 
 
     return render_template('auth/register.html', title='Registro', form = form) 
+
+@page.route('/tasks')
+@login_required
+def tasks():
+    return render_template('tasks/my-resources.html', title = 'Mis recursos')
+
+@page.route('/tasks/new')
+@login_required
+def new_task():
+    return render_template('task/new.html', title = 'Nueva tarea', form=form)

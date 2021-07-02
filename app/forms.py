@@ -38,3 +38,12 @@ class RegisterForm(Form):
     def validate_username(self, email):
         if User.get_by_email(email.data):
             raise validators.ValidationError('El email ya se encuentra en uso.') #no muestra este mensaje (Issue)
+
+    def TaskForm(Form):
+        title = StringField('Titulo', [
+            validators.lenght(min=4, max=50, message='Título fuera de rango.'),
+            validators.DataRequired(message='El título es requerido.')
+            ])
+        description = TextAreaField('Descripción', [
+            validator.DataRequired(message='La descripción es requerida.')
+        ])             
