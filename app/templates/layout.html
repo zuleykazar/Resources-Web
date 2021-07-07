@@ -6,7 +6,7 @@
 
 {% block nav %}
     <nav class="flex justify-between items-center container lg:px-12 lg:py-4 p-4 mx-auto h-16 w-11/12 border-2 border-pink-500 rounded-lg shadow-md my-4">
-        <a href="{{url_for('static', filename='index.html')}}" class="">
+        <a href="{{'/'}}" class="">
             <div class="flex justify-center items-center h-10 w-10 rounded-full bg-pink-500 z-0">
                 <div class="flex justify-center items-center h-6 w-6 rounded-full bg-white z-1"> 
                     <div class="flex justify-center items-center h-4 w-4 rounded-full bg-gray-300 z-2">
@@ -33,18 +33,18 @@
 {% block content%}
     <div class="container mx-auto lg:px-12 px-4">
 
-        <div class="h-full w-11/12">
+        <div class="h-full w-11/12 mx-auto">
             {% with messages = get_flashed_messages(with_categories=True) %}
 
             {% if messages %}
 
                 {% for categories, message in messages %}
                     {% if category == 'error' %}
-                        <div class="alert alert-danger bg-gray-500 opacity-50" role="alert">
+                        <div class="flex justify-center alert alert-danger bg-gray-500 opacity-50" role="alert">
                             {{ message }}
                         </div>
                     {% else %}                                          
-                        <div class="alert alert-success bg-gray-500 opacity-50" role="alert">
+                        <div class="flex justify-center alert alert-success bg-gray-500 opacity-50" role="alert">
                             {{ message }}
                         </div>
                     {% endif%}

@@ -8,24 +8,24 @@
         </div>
         <div class="flex flex-col justify-center items-center h-full lg:w-80 md:w-60 p-4">
             <h3 class="mx-auto font-sans text-xl font-extralight my-4">REGISTRO</h3>
-            <form class="lg:w-80 md:w-60 flex flex-col mx-auto space-y-8" method="post">
+            <form class="lg:w-80 md:w-60 flex flex-col mx-auto space-y-4" method="post">
     
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
     
-                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
-                {{ render_field (form.username, class='form-control', placeholder='username') }}
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.username, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='username') }}
                 </div>
             
-                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
-                    {{ render_field (form.email, class='form-control', placeholder='email') }}
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.email, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='email') }}
                 </div>
     
-                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
-                    {{ render_field (form.password, class='form-control', placeholder='password') }}
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.password, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='password') }}
                 </div>
             
-                <div class="form-group h-8 lg:w-full md:w-60 border-2 border-pink-500 rounded-md space-y-2 px-2 font-light">
-                    {{ render_field (form.confirm_password, class='form-control', placeholder='confirm password') }}
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.confirm_password, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='confirm password') }}
                 </div>
     
                 <div class="form-check">

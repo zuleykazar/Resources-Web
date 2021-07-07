@@ -33,7 +33,7 @@ def index():
 @page.route('/logout')
 def logout():
     logout_user()
-    flash (LOGOUT)
+    flash(LOGOUT)
     return redirect(url_for('.login'))
 
 @page.route('/login', methods = ['GET', 'POST'])
@@ -50,6 +50,7 @@ def login():
             login_user(user)
             flash(LOGIN)
             return redirect(url_for('.tasks'))
+
         else:
             flash(ERROR_USER_PASSWORD, 'error')
 
@@ -69,7 +70,6 @@ def register():
             flash(USER_CREATED)
             login_user(user)
             return redirect(url_for('.tasks'))
-
 
     return render_template('auth/register.html', title='Registro', form = form) 
 
