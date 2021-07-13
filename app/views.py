@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import render_template, request, flash, redirect, url_for 
 
 from flask_login import login_user, logout_user, login_required, current_user
-from .models import User
+from .models import User, Task
 from .forms import LoginForm, RegisterForm, TaskForm
 from app.consts import *
 
@@ -78,8 +78,16 @@ def register():
 def tasks():
     return render_template('tasks/my-resources.html', title = 'Mis recursos')
 
-@page.route('/tasks/new')
+@page.route('/tasks/new', methods=['GET', 'POST'])
 @login_required
 def new_task():
-    form = TaskForm()
+    form = TaskForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+ 
+        task = Task.create_element(form.title.data, form.comment.data, current_user.id)
+
+        if task:
+            flash(TASK_CREATED)
+
     return render_template('tasks/new.html', title = 'Nueva tarea', form=form)

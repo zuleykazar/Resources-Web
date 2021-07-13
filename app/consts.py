@@ -7,3 +7,5 @@ LOGIN = 'Usuario autenticado exitosamente!'
 LOGOUT = 'Sesión cerrada exitosamente!'
 
 ERROR_USER_PASSWORD = 'Usuario o contraseña inválidos.'
+
+TASK_CREATED = 'Artículo ingresado exitosamente'

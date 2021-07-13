@@ -57,6 +57,15 @@ class Task(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50))
-    description = db.Column(db.Text())
+    comment = db.Column(db.Text())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+
+    @classmethod
+    def create_element(cls, title, comment, user_id):
+        task = Task(title=title, comment=comment, user_id=user_id)
+
+        db.session.add(task)
+        db.session.commit()
+
+        return task
