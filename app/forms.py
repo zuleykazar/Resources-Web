@@ -1,6 +1,6 @@
 from wtforms import Form
 from wtforms import validators
-from wtforms import StringField, PasswordField, BooleanField
+from wtforms import StringField, PasswordField, BooleanField, TextAreaField
 from wtforms.fields.html5 import EmailField
 
 from .models import User 
@@ -40,11 +40,11 @@ class RegisterForm(Form):
         if User.get_by_email(email.data):
             raise validators.ValidationError('El email ya se encuentra en uso.') #no muestra este mensaje (Issue) 
 
-    def TaskForm(Form):
-        title = StringField('Titulo', [
-            validators.lenght(min=4, max=50, message='Título fuera de rango.'),
-            validators.DataRequired(message='El título es requerido.')
-        ])
-        description = TextAreaField('Descripción', [
-            validator.DataRequired(message='La descripción es requerida.')
-        ])             
+class TaskForm(Form):
+    title = StringField('Titulo', [
+        validators.length(min=4, max=50, message='Título fuera de rango.'),
+        validators.DataRequired(message='El título es requerido.')
+    ])
+    comment = TextAreaField('Comentario', [
+        validators.DataRequired(message='El comentario es requerido.')
+    ])             

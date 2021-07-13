@@ -3,7 +3,7 @@ from flask import render_template, request, flash, redirect, url_for
 
 from flask_login import login_user, logout_user, login_required, current_user
 from .models import User
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, TaskForm
 from app.consts import *
 
 from ._init_ import login_manager
@@ -81,4 +81,5 @@ def tasks():
 @page.route('/tasks/new')
 @login_required
 def new_task():
-    return render_template('task/new.html', title = 'Nueva tarea', form=form)
+    form = TaskForm()
+    return render_template('tasks/new.html', title = 'Nueva tarea', form=form)
