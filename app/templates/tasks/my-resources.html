@@ -12,14 +12,19 @@
         <tr>
             <th scope="col">Título</th>
             <th scope="col">Comentario</th>
+            <th scope="col"></th>
         </tr>
     </thead>
 </table>
 <tbody>
     {% for task in tasks %}
-    <tr class="flex flex-col">
+    <tr>
         <td>{{task.title}}</td>
         <td>{{task.comment}}</td>
+        <td>
+            <a href=""><ion-icon name="create"></ion-icon></a>
+            <a href=""><ion-icon name="trash"></ion-icon></a>
+        </td>
     </tr>
     {% endfor %}
 </tbody>
