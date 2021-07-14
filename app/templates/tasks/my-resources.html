@@ -1,8 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block container %}
+<div>
+    <h3>Mis Recursos</h3>
+    <a href="{{url_for('.new_task')}}">Nuevo recurso</a>
+</div>
 
-<h3>Mis Recursos</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Comentario</th>
+        </tr>
+    </thead>
+</table>
+<tbody>
+    {% for task in tasks %}
+    <tr class="flex flex-col">
+        <td>{{task.title}}</td>
+        <td>{{task.comment}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
 
 {% endblock %}
 

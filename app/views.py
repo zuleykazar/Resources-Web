@@ -76,7 +76,8 @@ def register():
 @page.route('/tasks')
 @login_required
 def tasks():
-    return render_template('tasks/my-resources.html', title = 'Mis recursos')
+    tasks = current_user.tasks
+    return render_template('tasks/my-resources.html', title = 'Mis recursos', tasks=tasks)
 
 @page.route('/tasks/new', methods=['GET', 'POST'])
 @login_required

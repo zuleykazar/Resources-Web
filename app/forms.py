@@ -47,4 +47,4 @@ class TaskForm(Form):
     ])
     comment = TextAreaField('Comentario', [
         validators.DataRequired(message='El comentario es requerido.')
-    ])             
+    ], render_kw={'rows':5})             
