@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% from 'helpers/_forms.html' import render_field %}
+
+{% block container %}
+    <div class="h-full flex justify-center items-center">
+        <div class="flex flex-col justify-center h-full w-10/12  rounded-md bg-white shadow-md p-3">
+            <h3 class="mx-auto font-sans text-xl font-extralight my-4">NUEVO RECURSO</h3>
+            <img src="{{ url_for('static', filename='images/location.svg')}}" class="h-32 w-32 mx-auto my-4" alt="">
+            <form class="w-96 flex flex-col justify-center mx-auto space-y-4 py-4" method="post">
+        
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+    
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.title, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='Título') }}
+                </div>
+            
+                <div class="form-group px-2 font-light">
+                    {{ render_field (form.comment, class='form-control w-full outline-none border-2 border-pink-500 rounded-md p-1', placeholder='Comentario') }}
+                </div>
+    
+                <div class="flex justify-center">
+                    <button type="submit" class="h-12 w-2/3 bg-pink-500 text-lg text-gray-50 font-semibold rounded-md p-3 my-4 hover:bg-opacity-80">GUARDAR</button>
+                </div>
+    
+            </form>
+        </div>
+    </div>
+{%  endblock %}
+
+{% block footer %}
+   
+{% endblock %}
