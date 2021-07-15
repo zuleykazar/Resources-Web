@@ -103,5 +103,8 @@ def edit_task(task_id):
 
     form=TaskForm(request.form, obj=task)
     if request.method == 'POST' and form.validate():
+        task = Task.update_element(task.id, form.title.data, form.comment.data)
+        if task:
+            flash(TASK_UPDATED)
 
     return render_template('tasks/edit.html', title='Editar', form=form)
