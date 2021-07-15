@@ -108,3 +108,16 @@ def edit_task(task_id):
             flash(TASK_UPDATED)
 
     return render_template('tasks/edit.html', title='Editar', form=form)
+
+@page.route('/task/delete<int:task_id>')
+@login_required
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+
+    if task.user_id != current_user.id:
+        abort(404)
+
+    if Task.delete_element(task.id):
+        flash(TASK_DELETED)
+
+    return redirect(url_for('.tasks'))

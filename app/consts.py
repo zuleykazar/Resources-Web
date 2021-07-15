@@ -10,4 +10,6 @@ ERROR_USER_PASSWORD = 'Usuario o contraseña inválidos.'
 
 TASK_CREATED = 'Recurso guardado exitosamente en Mis Recursos'
 
-TASK_UPDATED = 'Actualización exitosa '
+TASK_UPDATED = 'Actualización exitosa.'
+
+TASK_DELETED = 'Eliminado exitosamente.'

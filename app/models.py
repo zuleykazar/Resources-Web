@@ -88,3 +88,15 @@ class Task(db.Model):
         db.session.commit()
 
         return task
+
+    @classmethod
+    def delete_element(cls, id):
+        task = Task.get_by_id(id)
+
+        if task is None:
+            return False
+
+        db.session.delete(task)
+        db.session.commit()
+
+        return True
