@@ -2,29 +2,31 @@
 {% from 'helpers/_forms.html' import render_field %}
 
 {% block container %}
-<div>
-    <h3>Mis Recursos</h3>
-    <a href="{{url_for('.new_task')}}">Nuevo recurso</a>
+<div class="h-full flex justify-center items-center">
+    <div class="flex flex-col justify-center h-full w-10/12 rounded-md bg-white shadow-md p-3">
+        <h3 class="mx-auto font-sans text-xl font-extralight my-4">MIS RECURSOS</h3>
+        <a href="{{url_for('.posts')}}" class="mx-auto underline">Añadir Nuevo</a>
+    </div>
 </div>
 
 
-<table>
+<table class="flex flex-col mx-auto h-full w-10/12 rounded-md bg-white shadow-md p-4">
     <thead>
         <tr>
-            <th scope="col">Título</th>
-            <th scope="col">Comentario</th>
-            <th scope="col"></th>
+            <th scope="col" class="w-80 text-left text-lg">Título</th>
+            <th scope="col" class="w-80 text-left text-lg">Comentario</th>
+            <th scope="col" class="w-80"></th>
         </tr>
     </thead>
     
     <tbody>
         {% for task in tasks %}
         <tr>
-            <td>{{task.title}}</td>
-            <td>{{task.comment}}</td>
-            <td>
-                <a href="{{url_for('.edit_task', task_id=task.id)}}"><ion-icon name="create"></ion-icon></a>
-                <a href="{{url_for('.delete_task', task_id=task.id)}}"><ion-icon name="trash"></ion-icon></a>
+            <td class="w-80 h-16 text-left font-sans font-light text-lg">{{task.title}}</td>
+            <td class="w-80 h-16 text-left font-sans font-light text-lg">{{task.comment}}</td>
+            <td class="w-80 text-right space-x-6">
+                <a href="{{url_for('.edit_task', task_id=task.id)}}" class="h-8 w-8 border border-gray-300 rounded-sm p-2"><ion-icon name="create" class="h-4 w-4"></ion-icon></a>
+                <a href="{{url_for('.delete_task', task_id=task.id)}}" class="h-8 w-8 bg-red-500 rounded-sm p-2"><ion-icon name="trash" class="h-4 w-4"></ion-icon></a>
             </td>
         </tr>
         {% endfor %}
@@ -32,16 +34,16 @@
 </table>
 
 <nav>
-    <ul class="pagination">
+    <ul class="pagination h-full flex justify-center items-center">
         {% if pagination.has_prev %}
-            <li class="page-item">
-                <a href="{{url_for('.tasks', page=page-1)}}">Anterior</a>
+            <li class="page-item my-10">
+                <a href="{{url_for('.tasks', page=page-1)}}" class="underline">Anterior</a>
             </li>
         {% endif %}
 
         {% if pagination.has_next %}
-            <li class="page-item">
-                <a href="{{url_for('.tasks', page=page+1)}}">Siguiente</a>
+            <li class="page-item my-10">
+                <a href="{{url_for('.tasks', page=page+1)}}" class="underline">Siguiente</a>
             </li>
         {% endif %}
     </ul>

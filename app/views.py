@@ -15,6 +15,7 @@ def load_user(id):
     return User.get_by_id(id)
 
 @page.route('/posts')
+@page.route('/posts/<int:page>')
 def posts():
     return render_template('posts.html', title = 'Posts' )
 
@@ -74,7 +75,6 @@ def register():
     return render_template('auth/register.html', title='Registro', form = form) 
 
 @page.route('/tasks')
-@page.route('/tasks/<int:page>')
 @login_required
 def tasks(page=1, per_page=5):
     pagination = current_user.tasks.paginate(page, per_page=per_page)
